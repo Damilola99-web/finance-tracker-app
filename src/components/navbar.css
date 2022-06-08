@@ -1,0 +1,10 @@
+.navbar {
+    width: 100%;
+    background: #effaf0;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+.navbar ul {
+    display: flex;
+    margin: 0 auto;
+}
