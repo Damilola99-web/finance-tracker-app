@@ -1,0 +1,33 @@
+.login-form {
+    max-width: 360px;
+    margin: 50px auto;
+    padding: 25px;
+}
+
+.login-form label {
+    display: block;
+    margin: 30px auto;
+}
+
+.login-form span {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.login-form input {
+    padding: 8px 6px;
+    font-style: 1rem;
+    color: #777;
+    width: 100%;
+}
+
+.error {
+    width: 100%;
+    background: #1e6424;
+    color: white;
+    border-radius: 10px;
+    padding: 9px 6px;
+    text-align: center;
+    margin-top: 15px;
+
+}

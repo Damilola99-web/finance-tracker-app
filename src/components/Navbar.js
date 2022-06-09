@@ -6,8 +6,12 @@ import './navbar.css'
 
 export default function Navbar() {
   return (
-    <div>
-      
-    </div>
+    <nav className='navbar'>
+      <ul>
+          <li className="title">myMoni</li>
+          <li><NavLink to='/login'>Login</NavLink></li>
+          <li><NavLink to='/signup'>Sign up</NavLink></li>
+      </ul>
+    </nav>
   );
 }
