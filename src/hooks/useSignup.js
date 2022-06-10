@@ -19,15 +19,11 @@ export const useSignup = () => {
 			// dispatch function
 			dispatch({ type: 'LOGIN', payload: res.user });
 
-			if (!isCancled) {
-				setIsPending(false);
-				seterror(null);
-			}
+			setIsPending(false);
+			seterror(null);
 		} catch (error) {
-			if (!isCancled) {
-				seterror(error.message);
-				setIsPending(false);
-			}
+			seterror(error.message);
+			setIsPending(false);
 		}
 	};
 
