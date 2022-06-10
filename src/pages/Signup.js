@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSignup } from '../hooks/useSignup';
 
 // css
 import './signup.css';
@@ -6,24 +7,27 @@ import './signup.css';
 export default function Signup() {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
-	const [ username, setUsername ] = useState('');
+	const [ displayName, setDisplayName ] = useState('');
     const [confirm, setConfirm] = useState('')
-    const [error, setError] = useState(false)
+    const [formerror, setFormError] = useState(false)
+	const {signup, isPending, error} = useSignup()
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setFormError(null)
 		if (confirm === password) {
-            console.log(username, email, password);
+            signup(email, password, displayName);
         } else {
-            setError('Passwords Must Match')
+            setFormError('Passwords Must Match')
         }
 	};
 	return (
 		<form className="login-form" onSubmit={handleSubmit}>
 			<h2>Sign Up</h2>
             {error && <p className='error'>{error}</p>}
+            {formerror && <p className='error'>{formerror}</p>}
 			<label>
 				<span>Username:</span>
-				<input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required/>
+				<input type="text" onChange={(e) => setDisplayName(e.target.value)} value={displayName} required/>
 			</label>
 			<label>
 				<span>Email:</span>
@@ -35,9 +39,11 @@ export default function Signup() {
 			</label>
 			<label>
 				<span>Confirm Password:</span>
-				<input type="password" onChange={(e) => setConfirm(e.target.value)} required />
+				<input type="password" onChange={(e) => {setConfirm(e.target.value); setFormError(null)} }required />
 			</label>
-			<button className="btn">Sign Up</button>
+			{!isPending && <button className="btn">Sign Up</button>}
+			{isPending && <button className="btn">Loading...</button>}
+			
 		</form>
 	);
 }

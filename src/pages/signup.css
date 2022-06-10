@@ -31,3 +31,13 @@
     margin-top: 15px;
 
 }
+.loading {
+    width: 100%;
+    background: #1e6424;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 6px;
+    text-align: center;
+    margin-top: 10px;
+
+}
