@@ -10,22 +10,27 @@ export default function Navbar() {
 	const { user } = useAuthContext();
 	return (
 		<nav className="navbar">
-			{!user && (
-				<ul>
-					<li className="title">myMoni</li>
-					<li>
-						<NavLink to="/login">Login</NavLink>
-					</li>
-					<li>
-						<NavLink to="/signup">Sign up</NavLink>
-					</li>
-				</ul>
-			)}
-			{user && (
-				<button className="btn" onClick={logout}>
-					Log Out
-				</button>
-			)}
+			<ul>
+        <li className="title">myMoni</li>
+				{!user &&
+					<>
+						<li>
+							<NavLink to="/login">Login</NavLink>
+						</li>
+						<li>
+							<NavLink to="/signup">Sign up</NavLink>
+						</li>
+					</>
+				}
+				{user && (
+					<>
+          <p>Hello, {user.displayName}</p>
+          <button className="btn" onClick={logout}>
+						Log Out
+					</button>
+          </>
+				)}
+			</ul>
 		</nav>
 	);
 }
