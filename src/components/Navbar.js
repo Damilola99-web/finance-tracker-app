@@ -24,7 +24,7 @@ export default function Navbar() {
 				}
 				{user && (
 					<>
-          <p>Hello, {user.displayName}</p>
+          <p className='capitalized'>Hello, {user.displayName}</p>
           <button className="btn" onClick={logout}>
 						Log Out
 					</button>
