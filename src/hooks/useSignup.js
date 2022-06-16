@@ -15,7 +15,6 @@ export const useSignup = () => {
 				throw new Error('Could not complete signup');
 			}
 			await res.user.updateProfile({ displayName });
-
 			// dispatch function
 			dispatch({ type: 'LOGIN', payload: res.user });
 
