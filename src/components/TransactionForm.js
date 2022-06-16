@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useFirestore } from '../hooks/useFirestore';
 
 export default function TransactionForm({uid}) {
@@ -9,6 +10,11 @@ export default function TransactionForm({uid}) {
         e.preventDefault()
         addDocument({uid, name, amount})
     }
+    // resetting the form fields 
+    useEffect(()=>{if (response.success) {
+      setName('')
+      setAmount('')
+    }},[response.success])
   return (
     <>
       <h3>Add a Transaction</h3>
@@ -21,7 +27,8 @@ export default function TransactionForm({uid}) {
               <span>Transaction Amount ($):</span>
               <input type="number" required onChange={(e)=> setAmount(e.target.value)}  value={amount} />
           </label>
-          <button>Add Transaction</button>
+          {!response.isPending && <button>Add Transaction</button>}
+          {response.isPending && <button>Loading...</button>}
       </form>
     </>
   );

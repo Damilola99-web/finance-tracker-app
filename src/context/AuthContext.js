@@ -29,6 +29,5 @@ export const AuthContextProvider = ({ children }) => {
 			unsub();
 		});
 	}, []);
-	console.log('value :', state);
 	return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
 };
